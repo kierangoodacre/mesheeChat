@@ -3,6 +3,9 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var port = process.env.PORT || 3000;
+app.listen(port, function() {
+  console.log('Our app is running on http://localhost:' + port);
+});
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/views/index.html');
@@ -33,11 +36,4 @@ io.on('connection', function(socket){
   });
 });
 
-// app.listen(port, function() {
-//   console.log('Our app is running on http://localhost:' + port);
-// });
 
-var port = process.env.PORT || 5000; // Use the port that Heroku provides or default to 5000  
-app.listen(port, function() {  
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-});
