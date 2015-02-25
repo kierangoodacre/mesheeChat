@@ -1,8 +1,9 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+// var clients = io.sockets.clients();
 
-var port = process.env.PORT || 3000;
+// var port = process.env.PORT || 8080;
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/views/index.html');
@@ -28,15 +29,21 @@ io.on('connection', function(socket){
 });
 
 io.on('connection', function(socket){
-  socket.on('user connected', function(socket){
-    io.emit('user connected', socket);
+  socket.on('user connected', function(clients){
+    io.emit('user connected', clients);
   });
 });
 
-app.listen(port, function() {
-  console.log('Our app is running on http://localhost:' + port);
+io.sockets.on('connection', function (socket) {
+  socket.on('connection name',function(user){
+    io.sockets.emit('new user', user.name + " has joined.");
+  })
 });
 
-http.listen(process.env.PORT || 3000, function(){
+// app.listen(port, function() {
+//   console.log('Our app is running on http://localhost:' + port);
+// });
+
+http.listen(3000, function(){
   console.log('listening on *:3000');
 });
