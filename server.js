@@ -33,9 +33,9 @@ io.on('connection', function(socket){
   });
 });
 
-app.listen(port, function() {
-  console.log('Our app is running on http://localhost:' + port);
-});
+// app.listen(port, function() {
+//   console.log('Our app is running on http://localhost:' + port);
+// });
 
 var port = process.env.PORT || 5000; // Use the port that Heroku provides or default to 5000  
 app.listen(port, function() {  
