@@ -1,4 +1,3 @@
-
 describe("Homepage", function(){
 
   var host = 'http://localhost:3000/';

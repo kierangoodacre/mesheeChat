@@ -1,49 +1,35 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-// var clients = io.sockets.clients();
+var people = {};
+var socket = io
 
-// var port = process.env.PORT || 8080;
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/views/index.html');
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+socket.on("connection", function (client) { 
+    client.on("join", function(name){
+        people[client.id] = name;
+        client.emit("update", "You have connected to the server.");
+        socket.sockets.emit("update", name + " has joined the server.")
+        socket.sockets.emit("update-people", people);
+        console.log(people);
+        console.log(name)
+    });
+
+    client.on("send", function(msg){
+        socket.sockets.emit("chat", people[client.id], msg);
+    });
+
+    client.on("disconnect", function(){
+        socket.sockets.emit("update", people[client.id] + " has left the server.");
+        delete people[client.id];
+        socket.sockets.emit("update-people", people);
+    });
 });
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-  });
-});
-
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-});
-
-io.on('connection', function(socket){
-  socket.on('user connected', function(clients){
-    io.emit('user connected', clients);
-  });
-});
-
-io.sockets.on('connection', function (socket) {
-  socket.on('connection name',function(user){
-    io.sockets.emit('new user', user.name + " has joined.");
-  })
-});
-
-// app.listen(port, function() {
-//   console.log('Our app is running on http://localhost:' + port);
-// });
-
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(3001, function(){
+  console.log('listening on *:3001');
 });

@@ -1,29 +1,100 @@
 <!doctype html>
 <html>
   <head>
-    <title>MessheeChat</title>
+    <title>Socket.IO chat</title>
     <link rel="stylesheet" type="text/css" href='style.css'>
-    <!-- <meta name="viewport" content="width=display-width, initial-scale=1"> -->
     <meta charset="utf-8">
-    </style>
   </head>
   <body>
-    <ul id="user-connected"></ul>
-    <ul id="messages"></ul>
-    <form id="post-message" action="">
-      <input id="m" name="message" autocomplete="off" /><button class="send-message-button" id='send-msg'>Send</button>
-    </form>
+ <div class="row">
+  <div class="span2">
+      <ul id="people" class="unstyled"></ul>
+  </div>
+  <div class="span4">
+      <ul id="msgs" class="unstyled">
+  </div>
+</div>
+<div class="row">
+    <div class="span5 offset2" id="login">
+        <form class="form-inline">
+              <input type="text" class="input-small" placeholder="Your name" id="name">
+            <input type="button" name="join" id="join" value="Join" class="btn btn-primary">
+        </form>
+    </div>
+
+    <div class="span5 offset2" id="chat">
+        <form id="2" class="form-inline">
+              <input type="text" class="input" placeholder="Your message" id="msg">
+            <input type="button" name="send" id="send" value="Send" class="btn btn-success">
+        </form>
+    </div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="http://cryptojs.altervista.org/api/functions_cryptography.js"></script>
     <script>
-      var socket = io();
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li id= "message">').text(msg));
+      $(document).ready(function(){
+        var socket = io();
+        $("#chat").hide();
+        $("#name").focus();
+        $("form").submit(function(event){
+            event.preventDefault();
+        });
+        $("#join").click(function(){
+          var name = $("#name").val();
+          if (name != "") {
+            socket.emit("join", name);
+            $("#login").detach();
+            $("#chat").show();
+            $("#msg").focus();
+            ready = true;
+          }
+        });
+        $("#name").keypress(function(e){
+          if(e.which == 13) {
+            var name = $("#name").val();
+            if (name != "") {
+              socket.emit("join", name);
+              ready = true;
+              $("#login").detach();
+              $("#chat").show();
+              $("#msg").focus();
+            }
+          }
+        });
+        socket.on("update", function(msg) {
+          if(ready)
+            $("#msgs").append("<li>" + msg + "</li>");
+        })
+        socket.on("update-people", function(people){
+          if(ready) {
+            $("#people").empty();
+            $.each(people, function(clientid, name) {
+              $('#people').append("<li>" + name + "</li>");
+            });
+          }
+        });
+        socket.on("chat", function(who, msg){
+          if(ready) {
+            $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + msg + "</li>");
+          }
+        });
+        socket.on("disconnect", function(){
+          $("#msgs").append("<li><strong><span class='text-warning'>The server is not available</span></strong></li>");
+          $("#msg").attr("disabled", "disabled");
+          $("#send").attr("disabled", "disabled");
+        });
+        $("#send").click(function(){
+          var msg = $("#msg").val();
+          socket.emit("send", msg);
+          $("#msg").val("");
+        });
+        $("#msg").keypress(function(e){
+          if(e.which == 13) {
+            var msg = $("#msg").val();
+            socket.emit("send", msg);
+            $("#msg").val("");
+          }
+        });
       });
     </script>
   </body>
