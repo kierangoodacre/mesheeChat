@@ -1,5 +1,5 @@
 var app = require('express')();
-var http = require('http').Server(app);
+var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var path = require('path');
 var express = require('express');
@@ -13,14 +13,18 @@ app.get('/', function(req, res){
 });
 
 socket.on("connection", function (client) { 
-    client.on("join", function(name){
-        people[client.id] = name;
+    client.on("join", function(user){
+        people[client.id] = user;
         client.emit("update", "You have connected to the server.");
-        socket.sockets.emit("update", name + " has joined the server.")
-        socket.sockets.emit("update-people", people);
+        client.broadcast.emit("update", user.name + " has joined the server.")
+        // socket.sockets.emit("update-people", people);
         console.log(people);
-        console.log(name)
     });
+
+    // client.on('connection-name', function(data) {
+    //     console.log(data)
+    //     socket.sockets.emit('new-user', data);
+    // });
 
     client.on("send", function(msg){
         socket.sockets.emit("chat", people[client.id], msg);
@@ -30,6 +34,12 @@ socket.on("connection", function (client) {
         socket.sockets.emit("update", people[client.id] + " has left the server.");
         delete people[client.id];
         socket.sockets.emit("update-people", people);
+    });
+});
+
+socket.sockets.on('connection', function(client){
+    client.on('create', function(room){
+        socket.join(room);
     });
 });
 
