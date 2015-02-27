@@ -1,14 +1,15 @@
 describe("Homepage", function(){
 
-  var host = 'http://localhost:3000/';
+  var host = 'http://localhost:3001/';
+
 
   before(function(){
     casper.start(host);
   });
 
-  it('should contain a send button', function(){
+  it('should contain a join button', function(){
     casper.then(function(){
-      expect("#send-msg").to.have.text('Send')
+      expect("#join").to.contain('join')
     });
   });
 

@@ -22,11 +22,6 @@ socket.on("connection", function (client) {
         console.log(people);
     });
 
-    // client.on('connection-name', function(data) {
-    //     console.log(data)
-    //     socket.sockets.emit('new-user', data);
-    // });
-
     client.on("send", function(msg){
         socket.sockets.emit("chat", people[client.id], msg);
     });
