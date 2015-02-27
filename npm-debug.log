@@ -1,0 +1,92 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/opt/boxen/nodenv/versions/v0.10/bin/node',
+1 verbose cli   '/opt/boxen/nodenv/versions/v0.10/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'mocha-casper-chai',
+1 verbose cli   '--save' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
+4 verbose node symlink /opt/boxen/nodenv/versions/v0.10/bin/node
+5 warn package.json meshee@1.0.0 No description
+6 warn package.json g@1.0.5 'repositories' (plural) Not supported. Please pick one as the 'repository' field
+7 warn package.json path@0.11.14 path is also the name of a node core module.
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'mocha-casper-chai', null ]
+10 verbose cache add name=undefined spec="mocha-casper-chai" args=["mocha-casper-chai",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'mocha-casper-chai',
+11 verbose parsed url   path: 'mocha-casper-chai',
+11 verbose parsed url   href: 'mocha-casper-chai' }
+12 silly lockFile f0c326aa-mocha-casper-chai mocha-casper-chai
+13 verbose lock mocha-casper-chai /Users/kierangoodacre/.npm/f0c326aa-mocha-casper-chai.lock
+14 silly lockFile f0c326aa-mocha-casper-chai mocha-casper-chai
+15 silly lockFile f0c326aa-mocha-casper-chai mocha-casper-chai
+16 verbose addNamed [ 'mocha-casper-chai', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile a6c7c42c-mocha-casper-chai mocha-casper-chai@
+19 verbose lock mocha-casper-chai@ /Users/kierangoodacre/.npm/a6c7c42c-mocha-casper-chai.lock
+20 silly addNameRange { name: 'mocha-casper-chai', range: '*', hasData: false }
+21 verbose request where is /mocha-casper-chai
+22 verbose request registry https://registry.npmjs.org/
+23 verbose request id 97acdf749e7743fb
+24 verbose url raw /mocha-casper-chai
+25 verbose url resolving [ 'https://registry.npmjs.org/', './mocha-casper-chai' ]
+26 verbose url resolved https://registry.npmjs.org/mocha-casper-chai
+27 verbose request where is https://registry.npmjs.org/mocha-casper-chai
+28 info trying registry request attempt 1 at 12:03:57
+29 http GET https://registry.npmjs.org/mocha-casper-chai
+30 http 404 https://registry.npmjs.org/mocha-casper-chai
+31 verbose headers { date: 'Fri, 27 Feb 2015 12:03:58 GMT',
+31 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+31 verbose headers   'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=0',
+31 verbose headers   'content-length': '52',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   age: '0',
+31 verbose headers   'x-served-by': 'cache-lhr6333-LHR',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1425038637.970972,VS0,VE90',
+31 verbose headers   'keep-alive': 'timeout=10, max=50',
+31 verbose headers   connection: 'Keep-Alive' }
+32 silly registry.get cb [ 404,
+32 silly registry.get   { date: 'Fri, 27 Feb 2015 12:03:58 GMT',
+32 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+32 silly registry.get     'content-type': 'application/json',
+32 silly registry.get     'cache-control': 'max-age=0',
+32 silly registry.get     'content-length': '52',
+32 silly registry.get     'accept-ranges': 'bytes',
+32 silly registry.get     via: '1.1 varnish',
+32 silly registry.get     age: '0',
+32 silly registry.get     'x-served-by': 'cache-lhr6333-LHR',
+32 silly registry.get     'x-cache': 'MISS',
+32 silly registry.get     'x-cache-hits': '0',
+32 silly registry.get     'x-timer': 'S1425038637.970972,VS0,VE90',
+32 silly registry.get     'keep-alive': 'timeout=10, max=50',
+32 silly registry.get     connection: 'Keep-Alive' } ]
+33 silly lockFile a6c7c42c-mocha-casper-chai mocha-casper-chai@
+34 silly lockFile a6c7c42c-mocha-casper-chai mocha-casper-chai@
+35 error 404 404 Not Found: mocha-casper-chai
+35 error 404
+35 error 404 'mocha-casper-chai' is not in the npm registry.
+35 error 404 You should bug the author to publish it
+35 error 404 It was specified as a dependency of 'meshee'
+35 error 404
+35 error 404 Note that you can also install from a
+35 error 404 tarball, folder, or http url, or git url.
+36 error System Darwin 14.1.0
+37 error command "/opt/boxen/nodenv/versions/v0.10/bin/node" "/opt/boxen/nodenv/versions/v0.10/bin/npm" "install" "mocha-casper-chai" "--save"
+38 error cwd /Users/kierangoodacre/Projects/node_apps/meshee
+39 error node -v v0.10.31
+40 error npm -v 1.4.23
+41 error code E404
+42 verbose exit [ 1, true ]

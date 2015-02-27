@@ -15,8 +15,9 @@ app.get('/', function(req, res){
 socket.on("connection", function (client) { 
     client.on("join", function(user){
         people[client.id] = user;
+        console.log(user)
         client.emit("update", "You have connected to the server.");
-        client.broadcast.emit("update", user.name + " has joined the server.")
+        client.broadcast.emit("update", people[client.id] + " has joined the server.")
         // socket.sockets.emit("update-people", people);
         console.log(people);
     });
@@ -31,7 +32,7 @@ socket.on("connection", function (client) {
     });
 
     client.on("disconnect", function(){
-        socket.sockets.emit("update", people[client.id] + " has left the server.");
+        socket.sockets.emit("update-disconnect", people[client.id] + " has left the server.");
         delete people[client.id];
         socket.sockets.emit("update-people", people);
     });
