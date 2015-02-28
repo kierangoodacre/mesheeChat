@@ -1,21 +1,21 @@
 var chai = require('chai');
 var expect = chai.expect;
 var io = require('socket.io-client');
-var socketURL = 'http://0.0.0.0:3001';
-var options ={
+var socketURL = 'http://localhost:3001';
+var options = {
   transports: ['websocket'],
   'force new connection': true
 };
-var chatUser1 = 'Nick'
-var chatUser2 = 'Alex'
-var chatUser3 = 'Rich'
+var chatUser1 = 'Nick';
+var chatUser2 = 'Alex';
+var chatUser3 = 'Rich';
 
-var message1 = 'Hey there'
+var message1 = 'Hey there';
 
 
 describe("Chat Server",function(){
 
-  it('Should broadcast new user to all users', function(done){
+  it('should broadcast new user to all users', function(done){
     var client1 = io.connect(socketURL, options);
 
     client1.on('connect', function(data){
@@ -30,14 +30,14 @@ describe("Chat Server",function(){
       });
 
       client2.on('update', function(usersName){
-        expect(usersName).to.contain("You have connected"); 
+        expect(usersName).to.contain("You have connected");
         client1.on('update', function(user) {
           expect(user).to.contain(chatUser2 + ' has joined the server.');
           client2.disconnect();
           client1.disconnect();
           done();
         });
-  
+
       });
 
     });
@@ -54,7 +54,7 @@ describe("Chat Server",function(){
     });
   });
 
-  it('Should broadcast to users when a user has left room', function(done){
+  it('should broadcast to users when a user has left room', function(done){
 
     var client1 = io.connect(socketURL, options);
 
@@ -88,7 +88,7 @@ describe("Chat Server",function(){
   //     client2.on('connect', function(data){
   //       client2.emit('join', chatUser2);
   //     });
-      
+
   //     client2.on('send', function(msg){
   //     console.log('WWWWWWWWWWWW')
   //       client2.emit('chat', function(data){
