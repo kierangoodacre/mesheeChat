@@ -1,15 +1,16 @@
 $(document).ready(function(){
 
-  var socket = io();
-  $("#chat").hide();
-  $("#name").focus();
-  $("form").submit(function(event){
+  var socket = io().connect(3001, 'http://[::]');
+    $("#chat").hide();
+    $("#name").focus();
+    $("form").submit(function(event){
       event.preventDefault();
+    });
   });
 
   $("#join").click(function(){
     var name = $("#name").val();
-    if (name != "") {
+    if (name !== "") {
       socket.emit("join", name);
       $("#login").detach();
       $("#chat").show();
@@ -21,7 +22,7 @@ $(document).ready(function(){
   $("#name").keypress(function(e){
     if(e.which == 13) {
       var name = $("#name").val();
-      if (name != "") {
+      if (name !== "") {
         socket.emit("join", name);
         ready = true;
         $("#login").detach();
@@ -34,7 +35,7 @@ $(document).ready(function(){
   socket.on("update", function(msg) {
     if(ready)
       $("#msgs").append("<li>" + msg + "</li>");
-  })
+  });
 
   socket.on("update-people", function(people){
     if(ready) {
@@ -63,8 +64,8 @@ $(document).ready(function(){
     $("#msg").val("");
   });
 
-  $("#msg").keypress(function(e){
-    if(e.which == 13) {
+  $("#msg").keypress(function(enter){
+    if(enter.which === 13) {
       var msg = $("#msg").val();
       socket.emit("send", msg);
       $("#msg").val("");
