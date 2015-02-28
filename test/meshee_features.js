@@ -2,7 +2,6 @@ describe("Homepage", function(){
 
   var host = 'http://localhost:3001/';
 
-
   before(function(){
     casper.start(host);
   });
@@ -13,13 +12,18 @@ describe("Homepage", function(){
     });
   });
 
-  it('should see message once sent', function(){
-    casper.then(function(){
-      this.fill('form[id="post-message"]',{
-        message: 'hello'
+  it('should see their name after submitting their name', function() {
+    casper.then(function() {
+
+      this.fill('form[id="name-form"]',{
+        join: 'Clint'
       }, true);
-      this.click('button[id="send-msg"]')
-      expect("#message").to.have.text('hello');
+
+      this.click('input[id="join"]');
+      setTimeout(function() {
+        expect('body').to.contain.text('Clint');
+      }, 1000);
     });
   });
+
 });
