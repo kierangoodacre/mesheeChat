@@ -6,13 +6,11 @@ var express = require('express');
 var people = {};
 var socket = io;
 
+require('./app/controllers/index.js')(app);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/css', express.static(__dirname + '/public/css'));
-
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/views/index.html');
-});
 
 socket.on("connection", function (client) {
     client.on("join", function(user){
