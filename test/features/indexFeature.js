@@ -1,14 +1,14 @@
-describe("Homepage", function(){
+describe("Homepage", function() {
 
   var host = 'http://localhost:3001/';
 
-  before(function(){
+  before(function() {
     casper.start(host);
   });
 
-  it('should contain a join button', function(){
-    casper.then(function(){
-      expect("#join").to.contain('join')
+  it('should contain a join button', function() {
+    casper.then(function() {
+      expect('#join').to.contain('join')
     });
   });
 
