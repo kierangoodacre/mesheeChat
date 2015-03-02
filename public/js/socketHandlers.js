@@ -58,14 +58,14 @@ $(document).ready(function(){
 
   $("#send").click(function(){
     var msg = $("#msg").val();
-    socket.emit("send", msg);
+    socket.emit("message", msg);
     $("#msg").val("");
   });
 
   $("#msg").keypress(function(event){
     if(event.which == 13) {
       var msg = $("#msg").val();
-      socket.emit("send", msg);
+      socket.emit("message", msg);
       $("#msg").val("");
     }
   });

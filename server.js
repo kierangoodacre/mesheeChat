@@ -28,7 +28,7 @@ socket.on("connection", function (client) {
     console.log(people);
   });
 
-  client.on("send", function(msg){
+  client.on("message", function(msg){
     socket.sockets.emit("chat", people[client.id], msg);
   });
 

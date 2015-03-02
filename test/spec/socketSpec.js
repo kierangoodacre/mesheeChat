@@ -75,42 +75,28 @@ describe("Chat Server",function(){
         });
         client2.disconnect();
       });
-      
     });
   });
 
   it('Should be able to broadcast messages to other sockets', function(done){
 
-    // var client1, client2, client3;
-    // var message = "Hello world";
-    // var messages = 0;
-
-    // var checkMesagges = function(client){
-    //   client.on('chat', function(msg){
-    //     message.should.equal(msg);
-    //     client.disconnect();
-    //     messages++;
-        
-    //   });
-    // };
-
     var client1, client2, client3;
     var messages = 0;
-    var message = 'Hello World';
+    var message = "Hello World";
 
     var checkMessage = function(client){
-      client.on('chat', function(msg){
+      client.on('chat', function(who, msg){
         message.should.equal(msg);
         client.disconnect();
         messages++;
-        if(messages === 3){
+        if (messages === 3 ){
           done();
         };
       });
     };
 
     client1 = io.connect(socketURL, options);
-     checkMessage(client1);
+    checkMessage(client1);
 
     client1.on('connect', function(data){
       client2 = io.connect(socketURL, options);
@@ -126,6 +112,4 @@ describe("Chat Server",function(){
       });
     });
   });
-
-
 });
