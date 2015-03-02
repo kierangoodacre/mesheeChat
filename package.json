@@ -8,6 +8,8 @@
     "express": "^4.10.2",
     "innkeeper-socket.io": "^1.4.0",
     "mocha-casperjs": "^0.5.3",
+    "mongodb": "^1.4.32",
+    "monk": "^1.0.0",
     "nodemon": "^1.3.7",
     "path": "^0.11.14",
     "socket.io": "^1.3.4",
@@ -18,6 +20,7 @@
     "casper-chai": "^0.2.1",
     "casperjs": "^1.1.0-beta3",
     "chai": "^2.1.0",
+    "chai-webdriver": "^1.1.1",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-express": "^1.4.1",
@@ -28,7 +31,10 @@
     "mocha": "^2.1.0",
     "mocha-casperjs": "^0.5.3",
     "phantomjs": "^1.9.15",
-    "socket.io-client": "^1.3.4"
+    "selenium-standalone": "^4.2.0",
+    "selenium-webdriver": "^2.45.1",
+    "socket.io-client": "^1.3.4",
+    "webdriverio": "^2.4.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

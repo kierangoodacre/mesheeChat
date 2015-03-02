@@ -62,8 +62,8 @@ $(document).ready(function(){
     $("#msg").val("");
   });
 
-  $("#msg").keypress(function(e){
-    if(e.which == 13) {
+  $("#msg").keypress(function(event){
+    if(event.which == 13) {
       var msg = $("#msg").val();
       socket.emit("send", msg);
       $("#msg").val("");

@@ -1,29 +1,33 @@
-describe("Homepage", function() {
+var expect = require('chai').expect;
+var webdriverio = require ('webdriverio');
 
-  var host = 'http://localhost:3001/';
+describe('Homepage test', function() {
 
-  before(function() {
-    casper.start(host);
+  var client = {};
+
+  before(function(done) {
+    client = webdriverio.remote({ desiredCapabilities: { browserName: 'chrome'}});
+    client.init(done)
   });
 
-  it('should contain a join button', function() {
-    casper.then(function() {
-      expect('#join').to.contain('join')
-    });
+  after(function(done) {
+    client.end(done)
   });
 
-  it('should see their name after submitting their name', function() {
-    casper.then(function() {
+  function inputName() {
+    client
+      .url('http://localhost:3001')
+      .setValue('#name', 'Clint')
+      .click('#join')
+    return client;
+  };
 
-      this.fill('form[id="name-form"]',{
-        join: 'Clint'
-      }, true);
-
-      this.click('input[id="join"]');
-        setTimeout(function() {
-          expect('body').to.contain.text('Clint');
-      }, 1000);
-    });
+  it('should tell user when it has connected', function(done) {
+    inputName()
+      .getText('#msgs', function(err, text){
+        expect(text).to.contain('You have connected to the server.')
+      })
+      .call(done);
   });
 
 });

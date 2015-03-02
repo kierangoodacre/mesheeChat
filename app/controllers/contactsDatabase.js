@@ -1,11 +1,11 @@
-var contacts = require('../models/contacts.js');
-var contactsDatabase = contacts.db;
+// var contacts = require('../models/contacts.js');
+// var contactsDatabase = contacts.db;
 
-module.exports = function(app) {
+// module.exports = function(app) {
 
-  app.use(function(req,res,next){
-    req.db = contactsDatabase;
-    next();
-  });
+//   app.use(function(req,res,next){
+//     req.db = contactsDatabase;
+//     next();
+//   });
 
-};
+// };
