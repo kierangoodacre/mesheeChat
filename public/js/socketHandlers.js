@@ -49,7 +49,7 @@ $(document).ready(function(){
 
   socket.on("chat", function(who, msg){
     if(ready) {
-      var plaintext = Crypt.AES.decrypt(msg, $('#cipher').val());
+      var plaintext = Crypt.AES.decrypt(msg, $('#decipher').val());
       $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + plaintext + "</li>");
     }
   });
