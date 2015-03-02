@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   var socket = io();
   $("#chat").hide();
   $("#name").focus();
@@ -9,7 +8,7 @@ $(document).ready(function(){
 
   $("#join").click(function(){
     var name = $("#name").val();
-    if (name != "") {
+    if (name !== "") {
       socket.emit("join", name);
       $("#login").detach();
       $("#chat").show();
@@ -21,7 +20,7 @@ $(document).ready(function(){
   $("#name").keypress(function(e){
     if(e.which == 13) {
       var name = $("#name").val();
-      if (name != "") {
+      if (name !== "") {
         socket.emit("join", name);
         ready = true;
         $("#login").detach();
