@@ -24,24 +24,11 @@ describe('Cryptography test', function() {
 
   it('see message if enter the correct key', function(done) {
     inputName()
-      .setValue('#cipher', 'meshee')
-      .setValue('#decipher', 'meshee')
+      .setValue('#key', 'meshee')
       .setValue('#msg', 'Hi, I am here')
       .click('#send')
       .getText('#msgs', function(err, text){
         expect(text).to.contain('Hi, I am here')
-      })
-      .call(done);
-  });
-
-  it('see message if enter the wrong key', function(done) {
-    inputName()
-      .setValue('#cipher', 'meshee')
-      .setValue('#decipher', 'mesh')
-      .setValue('#msg', 'Hi, I am here')
-      .click('#send')
-      .getText('#msgs', function(err, text){
-        expect(text).not.to.contain('Hi, I am here')
       })
       .call(done);
   });
