@@ -19,19 +19,6 @@ $(document).ready(function(){
     }
   });
 
-  $("#name").keypress(function(e){
-    if(e.which == 13) {
-      var name = $("#name").val();
-      if (name !== "") {
-        socket.emit("join", name);
-        ready = true;
-        $("#login").detach();
-        $("#chat").show();
-        $("#msg").focus();
-      }
-    }
-  });
-
   socket.on("update", function(msg) {
     if(ready)
       $("#msgs").append("<li>" + msg + "</li>");
