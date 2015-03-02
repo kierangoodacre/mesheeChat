@@ -80,6 +80,20 @@ describe("Chat Server",function(){
   });
 
   it('Should be able to broadcast messages to other sockets', function(done){
+
+    // var client1, client2, client3;
+    // var message = "Hello world";
+    // var messages = 0;
+
+    // var checkMesagges = function(client){
+    //   client.on('chat', function(msg){
+    //     message.should.equal(msg);
+    //     client.disconnect();
+    //     messages++;
+        
+    //   });
+    // };
+
     var client1, client2, client3;
     var messages = 0;
     var message = 'Hello World';
@@ -112,4 +126,6 @@ describe("Chat Server",function(){
       });
     });
   });
+
+
 });
