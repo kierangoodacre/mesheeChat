@@ -1,4 +1,7 @@
+var Crypt = new Crypt();
+
 $(document).ready(function(){
+
   var socket = io();
   $("#chat").hide();
   $("#name").focus();
@@ -46,7 +49,8 @@ $(document).ready(function(){
 
   socket.on("chat", function(who, msg){
     if(ready) {
-      $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + msg + "</li>");
+      var plaintext = Crypt.AES.decrypt(msg, $('#cipher').val());
+      $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + plaintext + "</li>");
     }
   });
 
@@ -58,14 +62,16 @@ $(document).ready(function(){
 
   $("#send").click(function(){
     var msg = $("#msg").val();
-    socket.emit("send", msg);
+    var ciphertext = Crypt.AES.encrypt(msg, $('#cipher').val());
+    socket.emit("send", ciphertext);
     $("#msg").val("");
   });
 
   $("#msg").keypress(function(event){
     if(event.which == 13) {
       var msg = $("#msg").val();
-      socket.emit("send", msg);
+      var ciphertext = Crypt.AES.encrypt(msg, $('#cipher').val());
+      socket.emit("send", ciphertext);
       $("#msg").val("");
     }
   });
