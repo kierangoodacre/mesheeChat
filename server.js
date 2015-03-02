@@ -6,11 +6,12 @@ var express = require('express');
 var people = {};
 var socket = io;
 
-require('./app/models/contacts.js');
+// require('./app/models/contacts.js');
 
-require('./app/controllers/database.js')(app);
 require('./app/controllers/index.js')(app);
-require('./app/controllers/contacts.js')(app);
+// require('./app/controllers/database.js')(app);
+// require('./app/controllers/contacts.js')(app);
+// require('./app/controllers/contacts/newContact.js')(app);
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
