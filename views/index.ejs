@@ -13,8 +13,6 @@
         </form>
     </div> -->
 
-    Passphrase: <input id="key" autocomplete="off" />
-
   <div class="row">
     <div class="span2">
       <ul id="people" class="unstyled"></ul>
@@ -25,18 +23,18 @@
   </div>
 
   <div class="row">
-
     <div class="span5 offset2" id="login">
       <form id="name-form" class="form-inline">
         <input type="text" class="input-small" placeholder="Your name" id="name">
-        <input type="button" name="join" id="join" value="Join" class="btn btn-primary">
+        <button name="join" id="join" value="Join" class="btn btn-primary">Join</button>
       </form>
     </div>
 
     <div class="span5 offset2" id="chat">
       <form id="2" class="form-inline">
         <input type="text" class="input" placeholder="Your message" id="msg">
-        <input type="button" name="send" id="send" value="Send" class="btn btn-success">
+        <input id="key" autocomplete="off" placeholder="Passphrase"/>
+        <button name="send" id="send" value="Send" class="btn btn-success">Send</button>
       </form>
     </div>
   </div>
