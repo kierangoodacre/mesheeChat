@@ -44,9 +44,15 @@ $(document).ready(function(){
   });
 
   socket.on("update-disconnect", function(user) {
+    socket.emit("user-list", name);
+    if(ready === true)
+      $("#users").html("<li>" + name + "</li>");
+  })
+
+  socket.on("update-disconnect", function(user) {
     if(ready === true)
       $("#msgs").append("<li>" + user + "</li>");
- })
+  })
 
   // socket.on("update-people", function(people){
   //   if(ready) {
