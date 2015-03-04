@@ -5,43 +5,14 @@
 </head>
 
 <body>
-  <!-- <meta http-equiv="refresh" content="3;url=/index"> -->
+  <meta http-equiv="refresh" content="3;url=/index">
   <script src="js/snap.svg.js"></script>
   <script type="text/javascript">
     window.onload = function() {
       var s = Snap("100%", 600);
 
-      var bigCircle3 = s.circle("50%", "70%", 60);
-      var c13 = bigCircle3.use();
-      var p3 = s.path("M110,95,95,110M115,100,100,115").attr({
-              fill: "none",
-              stroke: "#4775ff",
-              strokeWidth: 4
-          });
-      var ptrn3 = p3.pattern(100, 100, 10, 10);
-      c13.attr({
-          fill: ptrn3
-      });
-      var c23 = bigCircle3.use();
-      c23.attr({
-          fill: "none",
-          stroke: "#000",
-          strokeWidth: 6
-      });
-      var ring3 = bigCircle3.use();
-      ring3.attr({
-          fill: "none",
-          stroke: "#000",
-          strokeWidth: 20
-      });
-      bigCircle3.toDefs();
       var mask = s.mask();
       mask.add(s.rect(0, 0, "100%", "100%").attr({fill: "#fff"}));
-      mask.add(ring3);
-      c13.attr({
-          mask: mask
-      });
-      bigCircle3.animate({r: 35}, 1500, mina.elastic);
 
       setTimeout(function() {
         var bigCircle = s.circle("40%", "38%", 60);
@@ -72,9 +43,8 @@
         c1.attr({
           mask: mask
         });
-
         bigCircle.animate({r: 35}, 1500, mina.elastic);
-      }, 300);
+      }, 0);
 
       setTimeout(function() {
         var bigCircle2 = s.circle("60%", "38%", 60);
@@ -107,6 +77,38 @@
         });
 
         bigCircle2.animate({r: 35}, 1500, mina.elastic);
+      }, 300);
+      
+      setTimeout(function() {
+        var bigCircle3 = s.circle("50%", "70%", 60);
+        var c13 = bigCircle3.use();
+        var p3 = s.path("M110,95,95,110M115,100,100,115").attr({
+                fill: "none",
+                stroke: "#4775ff",
+                strokeWidth: 4
+            });
+        var ptrn3 = p3.pattern(100, 100, 10, 10);
+        c13.attr({
+            fill: ptrn3
+        });
+        var c23 = bigCircle3.use();
+        c23.attr({
+            fill: "none",
+            stroke: "#000",
+            strokeWidth: 6
+        });
+        var ring3 = bigCircle3.use();
+        ring3.attr({
+            fill: "none",
+            stroke: "#000",
+            strokeWidth: 20
+        });
+        bigCircle3.toDefs();
+        mask.add(ring3);
+        c13.attr({
+            mask: mask
+        });
+        bigCircle3.animate({r: 35}, 1500, mina.elastic);
       }, 600);
 
     }
