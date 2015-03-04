@@ -46,8 +46,6 @@ var gruntConfig = {
   }
 };
 
-
-
 module.exports = function(grunt) {
 
   grunt.initConfig(gruntConfig);
