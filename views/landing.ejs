@@ -5,6 +5,60 @@
 </head>
 
 <body>
+  <meta http-equiv="refresh" content="5;url=http://localhost:3001/index">
+  <script src="js/snap.svg.js"></script>
+  <script type="text/javascript">
+
+    // var delay = 5000;
+    // setTimeout(function() {
+    //   window.location = "/";
+    // }, delay);
+
+    window.onload = function() {
+      var s = Snap(800, 600);
   
+      var bigCircle = s.circle(150, 150, 100);
+      // Lets use it again for patterned fill
+      var c1 = bigCircle.use();
+      // Create pattern
+      var p = s.path("M110,95,95,110M115,100,100,115").attr({
+              fill: "none",
+              stroke: "#bada55",
+              strokeWidth: 4
+          });
+      var ptrn = p.pattern(100, 100, 10, 10);
+      // and apply some nice attributes
+      c1.attr({
+          fill: ptrn
+      });
+      //-----------------------------------------------------
+      // Lets use it for stroke
+      var c2 = bigCircle.use();
+      c2.attr({
+          fill: "none",
+          stroke: "#000",
+          strokeWidth: 6
+      });
+      // Lets create a masking circle
+      var ring = bigCircle.use();
+      ring.attr({
+          fill: "none",
+          stroke: "#000",
+          strokeWidth: 20 // we need only inner 10px of it
+      });
+      // Hide bigCircle by moving it to <defs>
+      bigCircle.toDefs();
+      var mask = s.mask();
+      // Background rect:
+      mask.add(s.rect(0, 0, "100%", "100%").attr({fill: "#fff"}));
+      // and our ring
+      mask.add(ring);
+      c1.attr({
+          mask: mask
+      });
+      //Now, let’s animate bigCircle:
+      bigCircle.animate({r: 50}, 5e3, mina.elastic);
+    }
+  </script>
 </body>
 </html>
