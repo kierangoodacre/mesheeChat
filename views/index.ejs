@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>Meshee</title>
+   <!--  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href='css/style.css'>
     <meta charset="utf-8">
   </head>
@@ -18,10 +19,16 @@
     </div>
     <div class="span4">
       <ul id="msgs" class="unstyled">
+        Jake has left the server.
     </div>
   </div>
 
+
   <div class="row">
+
+    <div class='col-md3'>
+     <ul id='rooms' class='list-group'></ul>
+    </div>
 
     <div class="span5 offset2" id="login">
       <form id="name-form" class="form-inline">
@@ -38,12 +45,12 @@
     </div>
   </div>
 
-  <div class="contacts">
-
-  </div>
+  <input type="text" class="input-small" placeholder="Room" id="create-room-name">
+  <button id='create-room-btn'class="btn btn-primary">Create room</button>
 
   <script src="js/socket.io-1.2.0.js"></script>
   <script src="js/jquery-1.11.1.js"></script>
+ <!--  // <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 <!--     // <script src="http://cryptojs.altervista.org/api/functions_cryptography.js"></script> -->
   <script src="js/socketHandlers.js"></script>
   </body>
