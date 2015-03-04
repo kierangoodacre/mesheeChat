@@ -32,7 +32,7 @@ $(document).ready(function(){
  //   }
  // });
 
-  socket.on("update", function(user){   
+  socket.on("update", function(user){
     socket.emit("user-list", name);
     if(ready === true)
       $("#users").html("<li>" + name + "</li>");
@@ -66,7 +66,7 @@ $(document).ready(function(){
   socket.on("chat", function(who, msg){
     if(ready) {
       var plaintext = Crypt.AES.decrypt(msg, $('#key').val());
-      $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + plaintext + "</li>");
+      $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong>: " + plaintext + "</li>");
     }
   });
 
