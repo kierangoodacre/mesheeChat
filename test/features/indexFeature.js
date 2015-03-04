@@ -76,22 +76,22 @@ describe('Homepage', function() {
       .call(done);
   });
 
-  // it('should update node user list when a new user joins', function(done) {
-  //   createTwoUsers()
-  //     .getText('#users', function(err, text) {
-  //       expect(text).to.contain('Jake')
-  //     })
-  //     .call(done);
-  // });
+  it('should update node user list when a new user joins', function(done) {
+    createTwoUsers()
+      .getText('#users', function(err, text) {
+        expect(text).to.contain('Jake')
+      })
+      .call(done);
+  });
 
-  // it('should update node user list when someone leaves', function(done) {
-  //   createTwoUsers()
-  //     .close()
-  //     .getText('#users', function(err, text) {
-  //       expect(text).not.to.contain('Jake')
-  //     })
-  //     .call(done);
-  // });
+  it('should update node user list when someone leaves', function(done) {
+    createTwoUsers()
+      .close()
+      .getText('#users', function(err, text) {
+        expect(text).not.to.contain('Jake')
+      })
+      .call(done);
+  });
 
 
 });
