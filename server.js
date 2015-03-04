@@ -24,7 +24,6 @@ socket.on("connection", function (client) {
     people[client.id] = user;
     client.emit("update", "You have connected to the server.");
     client.broadcast.emit("update", people[client.id] + " has joined the server.")
-    // socket.sockets.emit("update-people", people);
     console.log(people);
   });
 
@@ -41,10 +40,4 @@ socket.on("connection", function (client) {
   client.on('user-list', function(user){
     client.emit("logged-in-users", people);
  });
-});
-
-socket.sockets.on('connection', function(client){
-  client.on('create', function(room){
-      socket.join(room);
-  });
 });
