@@ -24,7 +24,7 @@ describe('Homepage', function() {
 
   function createTwoUsers() {
     createOneUser('Clint')
-      .newWindow('http://localhost:3001', 'Chat 2')
+      .newWindow('http://localhost:3001')
       .setValue('#name', 'Jake')
       .click('#join')
     return client;
@@ -67,7 +67,7 @@ describe('Homepage', function() {
       .call(done);
   });
 
-  it('should update node list when a user joins', function(done) {
+  it('should update server when a user joins', function(done) {
     createTwoUsers()
       .switchTab()
       .getText('#msgs', function(err, text) {
@@ -75,5 +75,15 @@ describe('Homepage', function() {
       })
       .call(done);
   });
+
+  // it('should update the nodes on the server when a user enters', function(done) {
+  //   createOneUser()
+  //     .waitFor('body', 2000)
+  //     .getHTML('#users', function(err, text) {
+  //       console.log(text)
+  //       expect(text).to.contain('Clint')
+  //     })
+  //     .call(done);
+  // });
 
 });
