@@ -60,3 +60,16 @@ form button {
  padding-top: 1%;
  float: right;
 }
+
+form #msg { border: 0;
+  padding: 10px;
+  width: 74%;
+  margin-right: .5%;
+}
+
+form #key { 
+  border: 0;
+  padding: 10px;
+  width: 15%;
+  margin-right: .5%;
+}
