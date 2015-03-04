@@ -67,9 +67,13 @@ describe('Homepage', function() {
       .call(done);
   });
 
-  // it('should update node list when a user joins', function() {
-  //   createOneUser('Clint')
-
-  // });
+  it('should update node list when a user joins', function(done) {
+    createTwoUsers()
+      .switchTab()
+      .getText('#msgs', function(err, text) {
+        expect(text).to.contain('Jake has joined the server.')
+      })
+      .call(done);
+  });
 
 });
