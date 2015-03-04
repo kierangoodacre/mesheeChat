@@ -16,14 +16,6 @@ describe('Cryptography test', function() {
     client_crypt2.init(done);
   });
 
-  after(function(done) {
-    client_crypt.end(done);
-  });
-
-  after(function(done) {
-    client_crypt2.end(done);
-  })
-
   function inputName() {
     client_crypt
       .url('http://localhost:3001')
@@ -51,24 +43,17 @@ describe('Cryptography test', function() {
       .call(done);
   });
 
-  it('cannot see anything if enter the wrong key', function(done) {
+  it('cannot see anything if a user enters the wrong key', function(done) {
     inputName()
       .setValue('#key', 'mesh')
       .setValue('#msg', 'Hi, I am Clint')
       .click('#send')
-      .getText('#msgs', function(err, text){
-        expect(text).to.contain('Hi, I am Clint')
-      })
 
     inputName2()
       .setValue('#key', 'meshee')
       .setValue('#msg', 'Hi, I am Jake')
       .click('#send')
-      .getText('#msgs', function(err, text){
-        expect(text).to.contain('Hi, I am Jake');
-      })
-      .waitFor('#msgs', 500)
-    
+
     client_crypt
       .getText('#msgs', function(err, text) {
         expect(text).to.contain('Hi, I am Clint');
