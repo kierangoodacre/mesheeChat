@@ -73,3 +73,11 @@ form #key {
   width: 15%;
   margin-right: .5%;
 }
+
+li #users {
+  list-style-type: none;
+}
+
+li #msgs {
+  list-style-type: none;
+}
