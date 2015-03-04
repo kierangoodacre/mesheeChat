@@ -21,7 +21,7 @@ var gruntConfig = {
     options: {
       require: ['chai'],
       reporter: 'spec',
-      timeout: 60000,
+      timeout: 100000,
       bail: true
     },
     all: ['test/**/*.js']
