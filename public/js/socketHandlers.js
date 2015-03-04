@@ -44,9 +44,9 @@ $(document).ready(function(){
     }
   });
 
-  socket.on("chat", function(who, msg){
+  socket.on("chat", function(person, msg){
     if(ready) {
-      $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + msg + "</li>");
+      $("#msgs").append("<li><strong><span class='text-success'>" + person.name + "</span></strong> says: " + msg + "</li>");
     }
   });
 
@@ -57,6 +57,7 @@ $(document).ready(function(){
   });
 
   $("#send").click(function(){
+    console.log('I tried to send')
     var msg = $("#msg").val();
     socket.emit("message", msg);
     $("#msg").val("");
@@ -68,5 +69,34 @@ $(document).ready(function(){
       socket.emit("message", msg);
       $("#msg").val("");
     }
+  });
+
+  $('#create-room-btn').click(function() {
+    var roomExists = false;
+    var roomName   = $('#create-room-name').val();
+    socket.emit('check', roomName, function(data) {
+      roomExists = data.result;
+      if(roomExists) {
+        console.log('error room exists')
+      } else {
+        if(roomName.length > 0) {
+          socket.emit('createRoom', roomName);
+          $("#msgs").append("<li>" + roomName + ' created' + "</li>");
+        }
+      }
+    });
+  });
+
+  socket.on('roomList', function(data){
+    $('#rooms').text("");
+    $('#rooms').append("<li class=\"list-group-item active\"> Meshee Rooms: <span class=\"badge\">" + "INCOMPLETE TOTAL" + "</span></li>") // add data count
+      if(!jQuery.isEmptyObject(data.rooms)) {
+        $.each(data.rooms, function(id, room) {
+          var html = "<button id='joinroom' class='joinRoomBtn btn btn-default btn-xs' >Join</button>" + " " + "<button id="+id+" class='removeRoomBtn btn btn-default btn-xs'>Remove</button>";
+          $('#rooms').append("<li id="+id+" class='list-group-item'><span>" + room.name + "</span> " + html + "</li");
+        });
+      } else {
+        $('#rooms').append("<li class='list-group-item'>There are no rooms yet.</li>");
+      }
   });
 });
