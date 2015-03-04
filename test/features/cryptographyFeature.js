@@ -67,6 +67,7 @@ describe('Cryptography test', function() {
       .getText('#msgs', function(err, text){
         expect(text).to.contain('Hi, I am Jake');
       })
+      .waitFor('#msgs', 500)
     
     client
       .getText('#msgs', function(err, text){
