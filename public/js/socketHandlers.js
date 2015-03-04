@@ -19,19 +19,43 @@ $(document).ready(function(){
     }
   });
 
+ //  $("#name").keypress(function(e){
+ //    if(e.which == 13) {
+ //      var name = $("#name").val();
+ //      if (name !== "") {
+ //        socket.emit("join", name);
+ //        ready = true;
+ //        $("#login").detach();
+ //        $("#chat").show();
+ //        $("#msg").focus();
+ //     }
+ //   }
+ // });
+
+  socket.on("update", function(user){   
+    socket.emit("user-list", name);
+    if(ready === true)
+      $("#users").html("<li>" + name + "</li>");
+  });
+
   socket.on("update", function(msg) {
     if(ready)
       $("#msgs").append("<li>" + msg + "</li>");
-  })
-
-  socket.on("update-people", function(people){
-    if(ready) {
-      $("#people").empty();
-      $.each(people, function(clientid, name) {
-        $('#people').append("<li>" + name + "</li>");
-      });
-    }
   });
+
+  socket.on("update-disconnect", function(user) {
+    if(ready === true)
+      $("#msgs").append("<li>" + user + "</li>");
+ })
+
+  // socket.on("update-people", function(people){
+  //   if(ready) {
+  //     $("#people").empty();
+  //     $.each(people, function(clientid, name) {
+  //       $('#people').append("<li>" + name + "</li>");
+  //     });
+  //   }
+  // });
 
   socket.on("chat", function(who, msg){
     if(ready) {
@@ -45,6 +69,17 @@ $(document).ready(function(){
     $("#msg").attr("disabled", "disabled");
     $("#send").attr("disabled", "disabled");
   });
+
+  socket.on("logged-in-users", function(who){
+   console.log(who);
+   if(ready === true){
+     var users = '';
+     $.each(who, function(index, person) {
+       users += '<li>' + person + '</li>'
+     })
+     $('#users').append(users);
+   }
+ });
 
   $("#send").click(function(){
     var msg = $("#msg").val();

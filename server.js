@@ -37,6 +37,10 @@ socket.on("connection", function (client) {
     delete people[client.id];
     socket.sockets.emit("update-people", people);
   });
+
+  client.on('user-list', function(user){
+    client.emit("logged-in-users", people);
+ });
 });
 
 socket.sockets.on('connection', function(client){
