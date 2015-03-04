@@ -4,11 +4,25 @@
  box-sizing: border-box;
 }
 
-body {
- font: 13px Helvetica, Arial;
+html {
+  height: 100%;
+  width: 100%;
 }
 
-form {
+body {
+ font: 13px Helvetica, Arial;
+ height: 100%;
+}
+
+#login form {
+ background: #000;
+ padding: 3px;
+ position: fixed;;
+ bottom: 50%;
+ left: 50%;
+}
+
+#chat form {
  background: #000;
  padding: 3px;
  position: fixed;
@@ -20,12 +34,23 @@ form input {
  border: 0;
  padding: 10px;
  width: 90%;
- margin-right: .5%;
+ margin-right: 0.5%;
 }
 
-form button {
- width: 9%;
+#login form button {
+ width: 70%;
  background: rgb(130, 224, 255);
+ border: none;
+ padding: 10px;
+ position: relative;
+ position: 0;
+ top: 100%;
+ left: 20%;
+}
+
+#chat form button {
+ width: 9%;
+ background: rgb(130, 134, 255);
  border: none;
  padding: 10px;
 }
@@ -49,9 +74,21 @@ form button {
  width: 100%;
 }
 
+#nodes-tile {
+  font: 30px Montserrat-Bold;
+  font-size 30em;
+  opacity: 0.7;
+}
+
 .user-column {
- height: 70%;
+ height: 100%;
+ width: 20%;
  float: left;
+ color: black;
+ background-color: black;
+ color: white;
+ font: 13px Montserrat-Bold, Arial;
+ text-align:center;
 }
 
 .messages-column {
@@ -63,8 +100,15 @@ form button {
 
 form #msg { border: 0;
   padding: 10px;
-  width: 74%;
-  margin-right: .5%;
+  width: 54%;
+  margin-left: 20%;
+}
+
+form #name {
+  border: 0;
+  padding: 10px;
+  width: 70%;
+  margin-left: 20%;
 }
 
 form #key { 
@@ -73,3 +117,19 @@ form #key {
   width: 15%;
   margin-right: .5%;
 }
+
+li #users {
+  list-style-type: none;
+}
+
+li #msgs {
+  list-style-type: none;
+}
+#users{
+  opacity: 0.7;
+  padding-top: 10%;
+}
+/* .form-inputs{
+  float:right;
+  width:80%;
+} */
