@@ -1,4 +1,5 @@
 var Crypt = new Crypt();
+var userTitle = "MESH USERS"
 
 $(document).ready(function(){
   var socket = io();
@@ -14,6 +15,7 @@ $(document).ready(function(){
       socket.emit("join", name);
       $("#login").detach();
       $("#chat").show();
+      $("#nodes-tile").text(userTitle);
       $("#msg").focus();
       ready = true;
     }

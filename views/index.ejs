@@ -11,7 +11,7 @@
 
   <section class="grid">
     <section class="user-column">
-      <div class="user-row"><span id="nodes-tile">Nodes</span>
+      <div class="user-row"><span id="nodes-tile"></span>
         <div class="users-span">
           <li id="users" class="unstyled" style="list-style-type: none;"></li>
         </div>
@@ -26,22 +26,27 @@
       </div>
     </section>
 
-    <div class="form-inputs">
-      <div class="span5 offset2" id="login">
-        <form id="name-form" class="form-inline">
-          <input type="text" class="input-small" placeholder="Your name" id="name">
-          <button name="join" id="join" value="Join" class="btn btn-primary">Join</button>
-        </form>
-      </div>
+    <section id="chat-column">
+      <div class="form-inputs" id="form-inputs">
+        <div class="span5 offset2" id="login">
+          <form id="name-form" class="form-inline">
+            <section id='try'>
+              <input type="text" class="input-small" placeholder="Your name" id="name">
+              <button name="join" id="join" value="Join" class="btn btn-primary">Join</button>
+            </section>
+          </form>
+        </div>
+        
 
-      <div class="span5 offset2" id="chat">
-        <form id="2" class="form-inline">
-          <input type="text" class="input" placeholder="Your message" id="msg">
-          <input type="password" id="key" autocomplete="off" placeholder="Your secret passphrase..."/>
-          <button name="send" id="send" value="Send" class="btn btn-success">Send</button>
-        </form>
+        <div class="span5 offset2" id="chat">
+          <form id="2" class="form-inline">
+            <input type="text" class="input" placeholder="Your message" id="msg">
+            <input type="password" id="key" autocomplete="off" placeholder="Your secret passphrase..."/>
+            <button name="send" id="send" value="Send" class="btn btn-success">Send</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   </section>
 
   <script src="js/socket.io-1.2.0.js"></script>
