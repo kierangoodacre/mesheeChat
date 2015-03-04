@@ -66,7 +66,9 @@ $(document).ready(function(){
   socket.on("chat", function(who, msg){
     if(ready) {
       var plaintext = Crypt.AES.decrypt(msg, $('#key').val());
-      $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong>: " + plaintext + "</li>");
+      if (plaintext != null) {
+        $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + plaintext + "</li>");
+      }
     }
   });
 
