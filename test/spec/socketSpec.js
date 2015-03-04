@@ -13,6 +13,20 @@ var chatUser3 = 'Rich';
 
 var message1 = 'Hey there';
 
+var client1, client2, client3;
+var messages = 0;
+var message = "Hello World";
+
+var checkMessage = function(client, done) {
+  client.on('chat', function(who, msg){
+    message.should.equal(msg);
+    client.disconnect();
+    messages++;
+    if (messages === 3 ){
+      done();
+    };
+  });
+};
 
 describe("Chat Server",function(){
 
@@ -21,9 +35,6 @@ describe("Chat Server",function(){
 
     client1.on('connect', function(data){
       client1.emit('join', chatUser1);
-
-      /* Since first client is connected, we connect
-         the second client. */
       var client2 = io.connect(socketURL, options);
 
       client2.on('connect', function(data){
@@ -42,17 +53,6 @@ describe("Chat Server",function(){
       });
 
     });
-
-    var numUsers = 0;
-    client1.on('new-user', function(usersName){
-      numUsers += 1;
-
-      if(numUsers === 2){
-        expect(usersName).to.equal(chatUser2.name + " has joined.");
-        client1.disconnect();
-        done();
-      }
-    });
   });
 
   it('should broadcast to users when a user has left room', function(done){
@@ -68,7 +68,7 @@ describe("Chat Server",function(){
         client2.emit('join', chatUser2);
         client2.on('disconnect', function(usersName){
           client1.on('update-disconnect', function(user){
-            expect(user).to.contain( chatUser2 + ' has left the server')
+            expect(user).to.contain(chatUser2 + ' has left the server')
             client1.disconnect();
             done();
           });
@@ -80,31 +80,16 @@ describe("Chat Server",function(){
 
   it('Should be able to broadcast messages to other sockets', function(done){
 
-    var client1, client2, client3;
-    var messages = 0;
-    var message = "Hello World";
-
-    var checkMessage = function(client){
-      client.on('chat', function(who, msg){
-        message.should.equal(msg);
-        client.disconnect();
-        messages++;
-        if (messages === 3 ){
-          done();
-        };
-      });
-    };
-
     client1 = io.connect(socketURL, options);
-    checkMessage(client1);
+    checkMessage(client1, done);
 
     client1.on('connect', function(data){
       client2 = io.connect(socketURL, options);
-      checkMessage(client2);
+      checkMessage(client2, done);
 
       client2.on('connect', function(data){
         client3 = io.connect(socketURL, options);
-        checkMessage(client3);
+        checkMessage(client3, done);
 
         client3.on('connect', function(data){
           client2.emit('message', 'Hello World');
