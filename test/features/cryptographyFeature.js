@@ -70,8 +70,10 @@ describe('Cryptography test', function() {
       .waitFor('#msgs', 500)
     
     client
-      .getText('#msgs', function(err, text){
+      .getText('#msgs', function(err, text) {
         expect(text).to.contain('Hi, I am Clint');
+      })
+      .getText('#msgs', function(err, text) {
         expect(text).to.not.contain('Hi, I am Jake');
       })
       .call(done);
