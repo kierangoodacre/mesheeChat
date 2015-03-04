@@ -67,7 +67,7 @@ $(document).ready(function(){
     if(ready) {
       var plaintext = Crypt.AES.decrypt(msg, $('#key').val());
       if (plaintext != null) {
-        $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong> says: " + plaintext + "</li>");
+        $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong>: " + plaintext + "</li>");
       }
     }
   });
