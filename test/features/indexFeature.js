@@ -14,7 +14,7 @@ describe('Homepage', function() {
     client.end(done)
   });
 
-  function inputName() {
+  function createOneUser() {
     client
       .url('http://localhost:3001')
       .setValue('#name', 'Clint')
@@ -22,8 +22,16 @@ describe('Homepage', function() {
     return client;
   };
 
+  function createTwoUsers() {
+    createOneUser('Clint')
+      .newWindow('http://localhost:3001', 'Chat 2')
+      .setValue('#name', 'Jake')
+      .click('#join')
+    return client;
+  };
+
   it('should let a user know when a message has been sent', function(done){
-   inputName('Clint')
+   createOneUser('Clint')
     .setValue('#msg', 'Hi from Clint')
     .click('#send')
     .getText('#msgs', function(err, text){
@@ -33,17 +41,17 @@ describe('Homepage', function() {
   });
 
   it('should let a user know who is talking', function(done) {
-    inputName('Clint')
+    createOneUser('Clint')
     .setValue('#msg', 'Hi from Clint')
     .click('#send')
     .getText('#msgs', function(err, text){
-      expect(text).to.contain('Clint says:')
+      expect(text).to.contain('Clint:')
     })
     .call(done);
   });
 
   it('should tell user when it has connected', function(done) {
-    inputName('Clint')
+    createOneUser('Clint')
       .getText('#msgs', function(err, text){
         expect(text).to.contain('You have connected to the server.')
       })
@@ -51,15 +59,17 @@ describe('Homepage', function() {
   });
 
   it('should let a user know when someone has disconnected from the server', function(done){
-    inputName('Clint')
-      .newWindow('http://localhost:3001', 'Chat 2')
-      .setValue('#name', 'Jake')
-      .click('#join')
-      .switchTab()
+    createTwoUsers()
+      .close()
       .getText('#msgs', function(err, text){
         expect(text).to.contain('Jake has left the server')
       })
       .call(done);
   });
+
+  // it('should update node list when a user joins', function() {
+  //   createOneUser('Clint')
+
+  // });
 
 });
