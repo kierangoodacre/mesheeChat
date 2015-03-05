@@ -16,7 +16,7 @@ describe('Homepage', function() {
 
   function createOneUser() {
     client
-      .url('http://localhost:3001')
+      .url('http://localhost:3001/index')
       .setValue('#name', 'Clint')
       .click('#join')
     return client;
@@ -24,7 +24,7 @@ describe('Homepage', function() {
 
   function createTwoUsers() {
     createOneUser('Clint')
-      .newWindow('http://localhost:3001', 'Chat 2')
+      .newWindow('http://localhost:3001/index', 'Chat 2')
       .setValue('#name', 'Jake')
       .click('#join')
     return client;

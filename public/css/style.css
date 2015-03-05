@@ -126,6 +126,11 @@ form #key {
   margin-right: .5%;
 }
 
+#logo {
+  display: block;
+  margin: auto;
+}
+
 li #users {
  list-style-type: none;
 }
