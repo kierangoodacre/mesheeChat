@@ -26,7 +26,7 @@ describe('Cryptography test', function() {
 
   function inputName() {
     client_crypt
-      .url('http://localhost:3001')
+      .url('http://localhost:3001/index')
       .setValue('#name', 'Clint')
       .click('#join')
     return client_crypt;
@@ -34,7 +34,7 @@ describe('Cryptography test', function() {
 
   function inputName2() {
     client_crypt2
-      .url('http://localhost:3001')
+      .url('http://localhost:3001/index')
       .setValue('#name', 'Jake')
       .click('#join')
     return client_crypt2;
