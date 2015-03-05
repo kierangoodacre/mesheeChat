@@ -73,3 +73,8 @@ form #key {
   width: 15%;
   margin-right: .5%;
 }
+
+#logo {
+  display: block;
+  margin: auto;
+}
