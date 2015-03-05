@@ -2,25 +2,27 @@
 <html>
 <head>
   <title>Meshee Chat</title>
+  <link rel="stylesheet" type="text/css" href='css/style.css'>
 </head>
 
 <body>
-  <meta http-equiv="refresh" content="3;url=/index">
+  <!-- <meta http-equiv="refresh" content="3;url=/index"> -->
   <script src="js/snap.svg.js"></script>
+
   <script type="text/javascript">
     window.onload = function() {
-      var s = Snap("100%", 600);
+      var s = Snap("#logo");
 
       var mask = s.mask();
       mask.add(s.rect(0, 0, "100%", "100%").attr({fill: "#fff"}));
 
       setTimeout(function() {
-        var bigCircle = s.circle("40%", "38%", 60);
+        var bigCircle = s.circle(200, 200, 60);
         var c1 = bigCircle.use();
         var p1 = s.path("M110,95,95,110M115,100,100,115").attr({
               fill: "none",
               stroke: "#bada55",
-              strokeWidth: 4
+              strokeWidth: 5
           });
         var ptrn1 = p1.pattern(100, 100, 10, 10);
         c1.attr({
@@ -30,7 +32,7 @@
         c2.attr({
           fill: "none",
           stroke: "#000",
-          strokeWidth: 6
+          strokeWidth: 4
         });
         var ring = bigCircle.use();
         ring.attr({
@@ -43,16 +45,16 @@
         c1.attr({
           mask: mask
         });
-        bigCircle.animate({r: 35}, 1500, mina.elastic);
+        bigCircle.animate({r: 35}, 1200, mina.elastic);
       }, 0);
 
       setTimeout(function() {
-        var bigCircle2 = s.circle("60%", "38%", 60);
+        var bigCircle2 = s.circle(400, 200, 60);
         var c12 = bigCircle2.use();
         var p2 = s.path("M110,95,95,110M115,100,100,115").attr({
               fill: "none",
               stroke: "#e68d53",
-              strokeWidth: 4
+              strokeWidth: 5
           });
         var ptrn2 = p2.pattern(100, 100, 10, 10);
         c12.attr({
@@ -62,7 +64,7 @@
         c22.attr({
           fill: "none",
           stroke: "#000",
-          strokeWidth: 6
+          strokeWidth: 4
         });
         var ring2 = bigCircle2.use();
         ring2.attr({
@@ -76,16 +78,16 @@
           mask: mask
         });
 
-        bigCircle2.animate({r: 35}, 1500, mina.elastic);
-      }, 300);
+        bigCircle2.animate({r: 35}, 1000, mina.elastic);
+      }, 200);
       
       setTimeout(function() {
-        var bigCircle3 = s.circle("50%", "70%", 60);
+        var bigCircle3 = s.circle(300, 373, 60);
         var c13 = bigCircle3.use();
         var p3 = s.path("M110,95,95,110M115,100,100,115").attr({
                 fill: "none",
                 stroke: "#4775ff",
-                strokeWidth: 4
+                strokeWidth: 5
             });
         var ptrn3 = p3.pattern(100, 100, 10, 10);
         c13.attr({
@@ -95,7 +97,7 @@
         c23.attr({
             fill: "none",
             stroke: "#000",
-            strokeWidth: 6
+            strokeWidth: 4
         });
         var ring3 = bigCircle3.use();
         ring3.attr({
@@ -108,10 +110,47 @@
         c13.attr({
             mask: mask
         });
-        bigCircle3.animate({r: 35}, 1500, mina.elastic);
+        bigCircle3.animate({r: 35}, 800, mina.elastic);
+      }, 400);
+
+      setTimeout(function() {
+        var text = s.text(300, 750, "MESHEE").attr({
+          fontSize: '40px',
+          'font-family': 'HelveticaNeue-Light',
+          textAnchor: "middle"
+        });
+        text.animate({'y': 490}, 200, mina.easein);
       }, 600);
 
+      setTimeout(function() {
+        var hand = s.line(235, 200, 235, 200).attr({
+          fill: "none",
+          stroke: "#000",
+          strokeWidth: 2
+        });
+        hand.animate()
+
+        var hand2 = s.line(218, 230, 218, 230).attr({
+            fill: "none",
+            stroke: "#000",
+            strokeWidth: 2
+        });
+  
+        var hand3 = s.line(382, 230, 382, 230).attr({
+            fill: "none",
+            stroke: "#000",
+            strokeWidth: 2
+        });
+
+        hand.animate({'x2': 365}, 200, mina.easein);
+        hand2.animate({'x2': 282}, 200, mina.easein);
+        hand2.animate({'y2': 343}, 200, mina.easein);
+        hand3.animate({'x2': 318}, 200, mina.easein);
+        hand3.animate({'y2': 343}, 200, mina.easein);
+      }, 600);
     }
   </script>
+
+  <svg id="logo" height="600" version="1.1" width="600" xmlns="http://www.w3.org/2000/svg"></svg>
 </body>
 </html>
