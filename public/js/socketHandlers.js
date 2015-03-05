@@ -4,6 +4,7 @@ var userTitle = "MESH USERS"
 $(document).ready(function(){
   var socket = io();
   $("#chat").hide();
+  $("#meshee-logo").hide();
   $("#name").focus();
   $("form").submit(function(event){
       event.preventDefault();
@@ -14,7 +15,8 @@ $(document).ready(function(){
     if (name !== "") {
       socket.emit("join", name);
       $("#login").detach();
-      $("#chat").show();
+      $("#meshee-logo").fadeIn(1000);
+      $("#chat").fadeIn(1000);
       $("#nodes-tile").text(userTitle);
       $("#msg").focus();
       ready = true;

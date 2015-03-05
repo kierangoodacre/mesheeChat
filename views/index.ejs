@@ -10,50 +10,52 @@
   </head>
   <body>
 
-  <section class="grid">
-    <section class="user-column">
-      <div class="user-row"><span id="nodes-tile"></span>
-        <div class="users-span">
-          <li id="users" class="unstyled" style="list-style-type: none;"></li>
+    <img src="Images/Meshee-logo.png" id="meshee-logo" alt="Meshee logo" style="width:130px;height:120px">
+
+    <section class="grid">
+      <section class="user-column">
+        <div class="user-row"><span id="nodes-tile"></span>
+          <div class="users-span">
+            <li id="users" class="unstyled" style="list-style-type: none;"></li>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section class="messages-column">
+        <div class="row">
+          <div class="span4">
+            <li id="msgs" class="unstyled" style="list-style-type: none;"></li>
+          </div>
+        </div>
+      </section>
+
+      <section id="chat-column">
+        <div class="form-inputs" id="form-inputs">
+          <div class="span5 offset2" id="login">
+            <form id="name-form" class="form-inline">
+              <section id='try'>
+                <input type="text" class="input-small" placeholder="Your name" id="name">
+                <button name="join" id="join" value="Join" class="btn btn-primary">Join</button>
+              </section>
+            </form>
+          </div>
+          
+
+          <div class="span5 offset2" id="chat">
+            <form id="2" class="form-inline">
+              <input type="text" class="input" placeholder="Your message" id="msg">
+              <input type="password" id="key" autocomplete="off" placeholder="Your secret passphrase..."/>
+              <button name="send" id="send" value="Send" class="btn btn-success">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </section>
 
-    <section class="messages-column">
-      <div class="row">
-        <div class="span4">
-          <li id="msgs" class="unstyled" style="list-style-type: none;"></li>
-        </div>
-      </div>
-    </section>
-
-    <section id="chat-column">
-      <div class="form-inputs" id="form-inputs">
-        <div class="span5 offset2" id="login">
-          <form id="name-form" class="form-inline">
-            <section id='try'>
-              <input type="text" class="input-small" placeholder="Your name" id="name">
-              <button name="join" id="join" value="Join" class="btn btn-primary">Join</button>
-            </section>
-          </form>
-        </div>
-        
-
-        <div class="span5 offset2" id="chat">
-          <form id="2" class="form-inline">
-            <input type="text" class="input" placeholder="Your message" id="msg">
-            <input type="password" id="key" autocomplete="off" placeholder="Your secret passphrase..."/>
-            <button name="send" id="send" value="Send" class="btn btn-success">Send</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </section>
-
-  <script src="js/socket.io-1.2.0.js"></script>
-  <script src="js/jquery-1.11.1.js"></script>
-  <script src="js/crypto.js"></script>
-  <script src="js/socketHandlers.js"></script>
+    <script src="js/socket.io-1.2.0.js"></script>
+    <script src="js/jquery-1.11.1.js"></script>
+    <script src="js/crypto.js"></script>
+    <script src="js/socketHandlers.js"></script>
 
   </body>
 </html>
