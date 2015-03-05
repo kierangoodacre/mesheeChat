@@ -152,3 +152,11 @@ li{
 #nodes-tile:hover {
   opacity: 1.0;
 }
+
+#send:hover {
+  background: #e68d53;
+}
+
+#join:hover {
+  background: #4775ff;
+}
