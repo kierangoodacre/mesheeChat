@@ -1,5 +1,6 @@
 var Crypt = new Crypt();
-var userTitle = "MESH USERS"
+var userTitle = "MESH USERS";
+var counter = 0;
 
 $(document).ready(function(){
   var socket = io();
@@ -67,7 +68,9 @@ $(document).ready(function(){
     if(ready) {
       var plaintext = Crypt.AES.decrypt(msg, $('#key').val());
       if (plaintext != null) {
-        $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong>: " + plaintext + "</li>");
+        $("#msgs").append("<li style='display:none' id='message" + counter + '\'' + "><strong><span class='text-success'>" + who + "</span></strong>: " + plaintext + "</li>");
+        $('#message' + counter).fadeIn();
+        counter += 1;
       }
     }
   });
