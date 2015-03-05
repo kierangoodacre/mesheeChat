@@ -16,6 +16,14 @@ describe('Cryptography test', function() {
     client_crypt2.init(done);
   });
 
+  after(function(done) {
+    client_crypt.end(done)
+  });
+
+  after(function(done) {
+    client_crypt2.end(done)
+  });
+
   function inputName() {
     client_crypt
       .url('http://localhost:3001')

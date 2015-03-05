@@ -14,4 +14,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/css', express.static(__dirname + '/public/css'));
 
-require('./app/src/sockets/sockets.js')(server);
+require('./app/src/sockets/socketHandlers.js')(server);

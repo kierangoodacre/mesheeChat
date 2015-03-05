@@ -1,11 +1,12 @@
 var Crypt = new Crypt();
+var userTitle = "MESH USERS"
 
 $(document).ready(function(){
   var socket = io();
   $("#chat").hide();
   $("#name").focus();
   $("form").submit(function(event){
-      event.preventDefault();
+    event.preventDefault();
   });
 
   $("#join").click(function(){
@@ -14,54 +15,53 @@ $(document).ready(function(){
       socket.emit("join", name);
       $("#login").detach();
       $("#chat").show();
+      $("#nodes-tile").text(userTitle);
       $("#msg").focus();
       ready = true;
     }
   });
 
- //  $("#name").keypress(function(e){
- //    if(e.which == 13) {
- //      var name = $("#name").val();
- //      if (name !== "") {
- //        socket.emit("join", name);
- //        ready = true;
- //        $("#login").detach();
- //        $("#chat").show();
- //        $("#msg").focus();
- //     }
- //   }
- // });
+  $("#send").click(function(){
+    var msg = $("#msg").val();
+    var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
+    socket.emit("message", ciphertext);
+    $("#msg").val("");
+  });
+
+  $("#msg").keypress(function(event){
+    if(event.which == 13) {
+      var msg = $("#msg").val();
+      var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
+      socket.emit("message", ciphertext);
+      $("#msg").val("");
+    }
+  });
 
   socket.on("update", function(user){
     socket.emit("user-list", name);
-    if(ready === true)
+    if(ready === true) {
       $("#users").html("<li>" + name + "</li>");
+    }
   });
 
   socket.on("update", function(msg) {
-    if(ready)
+    if(ready) {
       $("#msgs").append("<li>" + msg + "</li>");
+    }
   });
 
   socket.on("update-disconnect", function(user) {
     socket.emit("user-list", name);
-    if(ready === true)
+    if(ready === true) {
       $("#users").html("<li>" + name + "</li>");
-  })
+    }
+  });
 
   socket.on("update-disconnect", function(user) {
-    if(ready === true)
+    if(ready === true) {
       $("#msgs").append("<li>" + user + "</li>");
+    }
   })
-
-  // socket.on("update-people", function(people){
-  //   if(ready) {
-  //     $("#people").empty();
-  //     $.each(people, function(clientid, name) {
-  //       $('#people').append("<li>" + name + "</li>");
-  //     });
-  //   }
-  // });
 
   socket.on("chat", function(who, msg){
     if(ready) {
@@ -79,29 +79,13 @@ $(document).ready(function(){
   });
 
   socket.on("logged-in-users", function(who){
-   console.log(who);
-   if(ready === true){
-     var users = '';
-     $.each(who, function(index, person) {
-       users += '<li>' + person + '</li>'
-     })
-     $('#users').append(users);
-   }
- });
-
-  $("#send").click(function(){
-    var msg = $("#msg").val();
-    var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
-    socket.emit("message", ciphertext);
-    $("#msg").val("");
-  });
-
-  $("#msg").keypress(function(event){
-    if(event.which == 13) {
-      var msg = $("#msg").val();
-      var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
-      socket.emit("message", ciphertext);
-      $("#msg").val("");
+    if(ready === true){
+      var users = '';
+      $.each(who, function(index, person) {
+        users += '<li>' + person + '</li>'
+      })
+      $('#users').append(users);
     }
   });
+
 });

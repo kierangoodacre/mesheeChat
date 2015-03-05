@@ -2,63 +2,58 @@
 <html>
   <head>
     <title>Meshee Chat</title>
-    <link rel="stylesheet" type="text/css" href='css/style.css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="bootstrap-theme" type="text/bootstrap" href="css/bootstrap-theme.css">
+    <link rel="bootstrap" type="text/bootstrap" href="css/bootstrap.css">
     <meta charset="utf-8">
   </head>
   <body>
-  <!--   <div class="span5 offset2" id="login">
-        <form class="form-inline">
-              <input type="text" class="input-small" placeholder="Room name" id="name">
-            <input type="button" name="create" id="create" value="Create" class="btn btn-primary">
-        </form>
-    </div> -->
 
-<section class="grid">
-   <section class="user-column">
-     <div class="user-row"><span>Nodes</span>
-       <div class="users-span">
-         <ul id="users" class="unstyled"></ul>
-       </div>
-     </div>
-   </section>
+  <section class="grid">
+    <section class="user-column">
+      <div class="user-row"><span id="nodes-tile"></span>
+        <div class="users-span">
+          <li id="users" class="unstyled" style="list-style-type: none;"></li>
+        </div>
+      </div>
+    </section>
 
-   <section class="messages-column">
-     <div class="row">
-       <div class="span2">
-         <ul id="people" class="unstyled"></ul>
-       </div>
-       <div class="span4">
-         <ul id="msgs" class="unstyled">
-       </div>
-     </div>
-   </section>
+    <section class="messages-column">
+      <div class="row">
+        <div class="span4">
+          <li id="msgs" class="unstyled" style="list-style-type: none;"></li>
+        </div>
+      </div>
+    </section>
 
-  <div class="row">
-    <div class="span5 offset2" id="login">
-      <form id="name-form" class="form-inline">
-        <input type="text" class="input-small" placeholder="Your name" id="name">
-        <button name="join" id="join" value="Join" class="btn btn-primary">Join</button>
-      </form>
-    </div>
+    <section id="chat-column">
+      <div class="form-inputs" id="form-inputs">
+        <div class="span5 offset2" id="login">
+          <form id="name-form" class="form-inline">
+            <section id='try'>
+              <input type="text" class="input-small" placeholder="Your name" id="name">
+              <button name="join" id="join" value="Join" class="btn btn-primary">Join</button>
+            </section>
+          </form>
+        </div>
+        
 
-    <div class="span5 offset2" id="chat">
-      <form id="2" class="form-inline">
-        <input type="text" class="input" placeholder="Your message" id="msg">
-        <input type="password" id="key" autocomplete="off" placeholder="Your secret passphrase..."/>
-        <button name="send" id="send" value="Send" class="btn btn-success">Send</button>
-      </form>
-    </div>
-  </div>
+        <div class="span5 offset2" id="chat">
+          <form id="2" class="form-inline">
+            <input type="text" class="input" placeholder="Your message" id="msg">
+            <input type="password" id="key" autocomplete="off" placeholder="Your secret passphrase..."/>
+            <button name="send" id="send" value="Send" class="btn btn-success">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
   </section>
-
-  <div class="contacts">
-
-  </div>
 
   <script src="js/socket.io-1.2.0.js"></script>
   <script src="js/jquery-1.11.1.js"></script>
   <script src="js/crypto.js"></script>
   <script src="js/socketHandlers.js"></script>
+  <script src="js/socketsHandlers/socketUpdate.js"></script>
 
   </body>
 </html>
