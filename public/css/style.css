@@ -3,6 +3,10 @@
  padding: 0;
  box-sizing: border-box;
 }
+@font-face {
+    font-family: helvetica;
+    src: url('Ledfont.ttf');
+}
 
 html {
   height: 100%;
@@ -10,7 +14,7 @@ html {
 }
 
 body {
- font: 13px Montserrat-Bold;
+ font: 13px helvetica;
  height: 100%;
 }
 
@@ -19,7 +23,7 @@ body {
  padding: 1%;
  position: fixed;;
  bottom: 50%;
- left: 50%;
+ left: 42%;
 }
 
 
@@ -80,7 +84,7 @@ text-align: center;
 }
 
 #nodes-tile {
-  font: 3.8em LEDfont;
+  font: 3.8em helvetica;
   font-size 30em;
   opacity: 0.7;
 }
@@ -95,7 +99,7 @@ text-align: center;
  color: black;
  background-color: black;
  color: white;
- font: 13px Montserrat-Bold, Arial;
+ font: 13px helvetica, Arial;
  text-align:center;
 }
 
@@ -144,7 +148,26 @@ li{
   padding: 0.2em;
   text-align:center;
 }
+
 #users{
   opacity: 0.7;
   padding-top: 10%;
+}
+
+#nodes-tile:hover {
+  opacity: 1.0;
+}
+
+#send:hover {
+  background: #e68d53;
+}
+
+#join:hover {
+  background: #4775ff;
+}
+
+#meshee-logo {
+  float: right;
+  padding-top: 1%;
+  margin-right: 2%;
 }

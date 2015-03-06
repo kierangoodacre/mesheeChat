@@ -1,10 +1,13 @@
 var Crypt = new Crypt();
-var userTitle = "MESH USERS"
+var userTitle = "MESH USERS";
+var counter = 0;
 
 $(document).ready(function(){
   var socket = io();
   $("#chat").hide();
-  $("#name").focus();
+  $(".user-column").hide();
+  $("#meshee-logo").hide();
+  $("#name").focus().fadeIn(1000);
   $("form").submit(function(event){
     event.preventDefault();
   });
@@ -14,7 +17,9 @@ $(document).ready(function(){
     if (name !== "") {
       socket.emit("join", name);
       $("#login").detach();
-      $("#chat").show();
+      $("#meshee-logo").fadeIn(1000);
+      $("#chat").fadeIn(1000);
+      $(".user-column").fadeIn(1000);
       $("#nodes-tile").text(userTitle);
       $("#msg").focus();
       ready = true;
@@ -67,7 +72,9 @@ $(document).ready(function(){
     if(ready) {
       var plaintext = Crypt.AES.decrypt(msg, $('#key').val());
       if (plaintext != null) {
-        $("#msgs").append("<li><strong><span class='text-success'>" + who + "</span></strong>: " + plaintext + "</li>");
+        $("#msgs").append("<li style='display:none' id='message" + counter + '\'' + "><strong><span class='text-success'>" + who + "</span></strong>: " + plaintext + "</li>");
+        $('#message' + counter).fadeIn();
+        counter += 1;
       }
     }
   });
