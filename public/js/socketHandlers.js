@@ -10,6 +10,8 @@ $(document).ready(function(){
   var s = Snap("#meshee-logo");
   var logoObject = new LogoObject(s, 0.3);
 
+  var dropSound = new buzz.sound("../sounds/drop.mp3");
+
   $("#meshee-logo").hide();
   $("#name").focus().fadeIn(1000);
   $("form").submit(function(event){
@@ -36,6 +38,7 @@ $(document).ready(function(){
     var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
     socket.emit("message", ciphertext);
     $("#msg").val("");
+    dropSound.play();
     logoObject.animate();
   });
 
@@ -45,6 +48,7 @@ $(document).ready(function(){
       var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
       socket.emit("message", ciphertext);
       $("#msg").val("");
+      dropSound.play();
       logoObject.animate();
     }
   });
