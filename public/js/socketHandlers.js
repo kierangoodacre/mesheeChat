@@ -5,8 +5,9 @@ var counter = 0;
 $(document).ready(function(){
   var socket = io();
   $("#chat").hide();
+  $(".user-column").hide();
   $("#meshee-logo").hide();
-  $("#name").focus();
+  $("#name").focus().fadeIn(1000);
   $("form").submit(function(event){
     event.preventDefault();
   });
@@ -18,6 +19,7 @@ $(document).ready(function(){
       $("#login").detach();
       $("#meshee-logo").fadeIn(1000);
       $("#chat").fadeIn(1000);
+      $(".user-column").fadeIn(1000);
       $("#nodes-tile").text(userTitle);
       $("#msg").focus();
       ready = true;
