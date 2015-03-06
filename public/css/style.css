@@ -171,5 +171,7 @@ li{
 #meshee-logo {
   float: right;
   padding-top: 1%;
-  margin-right: 2%;
+}
+#mesh-users{
+  margin-top: 3%;
 }
