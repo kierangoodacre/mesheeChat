@@ -8,7 +8,7 @@
 
 Meshed network vs Internet Service Provider (ISP)
 
-1. Centralised authority control-free
+1. Centralised authority control-freed
 2. Robustness in natural disaster
 3. Political free
 4. No more spying

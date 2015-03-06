@@ -16,6 +16,16 @@
       var mask = s.mask();
       mask.add(s.rect(0, 0, "100%", "100%").attr({fill: "#fff"}));
 
+      function createCircle(x, y, color) {
+        var circle = s.circle(x, y, 60);
+        var c = circle.use();
+        var p = s.path("M110,95,95,110M115,100,100,115").attr({
+              fill: "none",
+              stroke: color,
+              strokeWidth: 5
+          });
+      };
+
       setTimeout(function() {
         var bigCircle = s.circle(200, 200, 60);
         var c1 = bigCircle.use();
