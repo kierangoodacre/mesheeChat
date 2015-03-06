@@ -6,6 +6,10 @@ $(document).ready(function(){
   var socket = io();
   $("#chat").hide();
   $(".user-column").hide();
+
+  var s = Snap("#meshee-logo");
+  var logoObject = new LogoObject(s, 0.3);
+
   $("#meshee-logo").hide();
   $("#name").focus().fadeIn(1000);
   $("form").submit(function(event){
@@ -31,6 +35,7 @@ $(document).ready(function(){
     var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
     socket.emit("message", ciphertext);
     $("#msg").val("");
+    logoObject.animate();
   });
 
   $("#msg").keypress(function(event){
@@ -39,6 +44,7 @@ $(document).ready(function(){
       var ciphertext = Crypt.AES.encrypt(msg, $('#key').val());
       socket.emit("message", ciphertext);
       $("#msg").val("");
+      logoObject.animate();
     }
   });
 
