@@ -5,9 +5,7 @@ var express = require('express');
 
 require('./app/controllers/index.js')(app);
 require('./app/controllers/landing.js')(app);
-// require('./app/controllers/database.js')(app);
-// require('./app/controllers/contacts.js')(app);
-// require('./app/controllers/contacts/newContact.js')(app);
+
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
