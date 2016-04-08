@@ -19,4 +19,5 @@ Meshed network vs Internet Service Provider (ISP)
 
 ### Security
 
+![meshee logo]
 (/kierangoodacre/Meshee/blob/master/public/Images/logo.png)
