@@ -10,8 +10,8 @@ Meshed network vs Internet Service Provider (ISP)
 
 1. Centralised authority control-freed
 2. Robustness in natural disaster
-3. Political free
-4. No more spying
+3. Politically free
+4. No more monitoring from oppresive regimes
 
 ### Security
 
@@ -27,7 +27,7 @@ Meshed network vs Internet Service Provider (ISP)
 [Cryptocat]: https://github.com/cryptocat/cryptocat/
 
 Maybe a chat room structure is better than a p2p encryption?
-Chat room only allow people with the key to access.
+Chat rooms only allow people with the key to access.
 Other people cannot access the chat room unless they have got the key.
 
 ### Two types of security
