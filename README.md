@@ -1,7 +1,7 @@
-# mesheeChat
-
 ![meshee logo]
 (https://github.com/kierangoodacre/mesheeChat/blob/master/logo.png)
+
+# mesheeChat
 
 ### Motivation
 
@@ -21,3 +21,8 @@ Meshed network vs Internet Service Provider (ISP)
 4. No more monitoring from oppresive regimes
 
 ### Security
+
+![meshee logo]
+(https://github.com/kierangoodacre/mesheeChat/blob/master/Screen%20Shot%202016-04-08%20at%2018.46.36.png)
+
+
