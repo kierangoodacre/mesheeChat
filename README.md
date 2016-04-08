@@ -49,4 +49,4 @@ In the command line
 
 ##Presentation
 
-[Linke to presentation]:http://slides.com/olucas92/deck#/3
+[Link to presentation] :http://slides.com/olucas92/deck#/3
