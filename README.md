@@ -1,5 +1,8 @@
 # mesheeChat
 
+![meshee logo]
+(https://github.com/kierangoodacre/mesheeChat/blob/master/logo.png)
+
 ### Motivation
 
 All around the world internet freedoms are being eroded by governments, restricting communications. For example, in Venezuala in 2014 the internet was turned off and modes of communcation were blocked. We wanted to create a secure, decentralised communications network that would enable secure conversations to take place without the internet.
@@ -18,6 +21,3 @@ Meshed network vs Internet Service Provider (ISP)
 4. No more monitoring from oppresive regimes
 
 ### Security
-
-![meshee logo]
-(https://github.com/kierangoodacre/mesheeChat/blob/master/logo.png)
