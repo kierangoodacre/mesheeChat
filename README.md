@@ -41,11 +41,11 @@ We tested using Mocha, Chai, Webdriver.io and Should using TDD and BDD throughou
 
 In the command line
 
-'git clone https://github.com/kierangoodacre/mesheeChat.git'
+`git clone https://github.com/kierangoodacre/mesheeChat.git`
 
-'npm install'
+`npm install`
 
-'nodemon'
+`nodemon`
 
 
 
